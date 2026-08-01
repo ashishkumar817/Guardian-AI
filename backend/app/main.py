@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from app.models.emergency_contact import EmergencyContact
 from app.database.database import Base, engine
 from app.models.user import User
@@ -14,6 +15,15 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(
     title="GuardianAI API",
     version="1.0.0"
+)
+
+# Enable CORS for Next.js frontend (http://localhost:3000)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 app.include_router(auth_router)

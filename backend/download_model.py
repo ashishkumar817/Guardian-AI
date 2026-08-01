@@ -1,6 +1,5 @@
 from ultralytics import YOLO
 
-# This will automatically download the weights if they aren't present
-model = YOLO("yolo11s.pt")
+model = YOLO("yolo11n.pt")
 
-print("Model downloaded successfully!")
+print("Downloaded successfully!")
